@@ -9,6 +9,7 @@ class Veiculos:
         # Para criar um atributo privado, digite dois __ (underscore) antes do parametro;
         # Encapsulamento
         self.__fabricante = fabricante
+        # Atributo sem encapsulamento
         self.modelo = modelo
         # Podemos criar um atributo sem a necessidade de inicializar-lo.
         self.__placa_veiculo = None
@@ -30,3 +31,29 @@ class Veiculos:
 
     def movimentar(self):
         print(f"Sou um veiculo em movimento...")
+
+
+# Herança
+class Carro(Veiculos):
+    # Metodo __init__ será herdado
+    def movimentar(self):
+        print(f"Sou um CARRO em movimento...")
+
+
+class Motocicleta(Veiculos):
+    def movimentar(self):
+        print("Sou uma MOTOCICLETA em movimento...")
+
+
+class Aviao(Veiculos):
+    # Foi acrescentado mais um parametro no __init__
+    def __init__(self, fabricante, modelo, categoria):
+        self.__categoria = categoria
+        # Super é usado para referenciar a classe herdada, no caso a classe Veiculo;
+        super().__init__(fabricante, modelo)
+
+    def get_cat(self):
+        print(f"Categoria: {self.__categoria}")
+
+    def movimentar(self):
+        print(f"Sou uma AERONAVE voando...")
